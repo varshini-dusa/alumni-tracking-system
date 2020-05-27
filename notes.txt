@@ -1,0 +1,23 @@
+                    =======27/5/2020    11.00PM     (VA) ========
+>ng generate module alumni --routing         //used to create module with routing files
+
+>ng generate module directorate --routing   
+
+>ng g c login        //create login component
+
+>ng g c register     //create register component
+
+>ng g s login        //creates login service
+
+>ng g s register     //creates register service
+
+>add ls:LoginService and public rs:RegisterService as public parameters to constructor in app.component.ts
+
+>declare isLoggedIn:boolean=false; in login.service.ts
+
+>add paths and components for login and register in routes array in appp-routing.module.ts
+
+>>>HERE DOING ng serve TO CHECK ROUTING     ~~Didnt work due to slow net
+
+>>>TRYING TO DO npm start TO CHECK ROUTING        ~$    SUCCESSFULLY EXECUTED    $~
+

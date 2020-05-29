@@ -53,4 +53,8 @@
 	localhost:4200/alumni/events				->	view or create events
 	localhost:4200/alumni/profile				->	view profile and button for edit profile
 	localhost:4200/alumni/messages				->	view or send messages
-	localhost:4200/alumni/editprofile			->	edit profile, details and password			
+	localhost:4200/alumni/editprofile			->	edit profile, details and password	
+
+> created db.js, server.js, apis folder and middlewares folder	
+
+

@@ -1,4 +1,4 @@
-                    =======27/5/2020    11.00PM     (VA) ========
+			=======27/5/2020    11.00PM     (VA) ========
 >ng generate module alumni --routing         //used to create module with routing files
 
 >ng generate module directorate --routing   

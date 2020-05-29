@@ -40,3 +40,17 @@
 >added null path to home component		~~DIDNT WORK~~	changed that, using redirect and empty path now
 
 >>>TRYING TO DO npm start TO CHECK WORKING TO HOME,LOGIN,REGISTER	~$	SUCCESSFULLY EXECUTED	$~
+
+>creating alumni/dashboard,members,notices,events,profile,messages,editprofile components
+
+>paths in alumni-tracking-system
+	localhost:4200/	(or)	localhost:4200/home	->	home component
+	localhost:4200/login						->	login component
+	localhost:4200/register						->	register component
+	localhost:4200/alumni/ (or) localhost:4200/alumni/dashboard	->	alumni dashboard component
+	localhost:4200/alumni/members				->	members component for searching
+	localhost:4200/alumni/notices				->	view notices created by directorate
+	localhost:4200/alumni/events				->	view or create events
+	localhost:4200/alumni/profile				->	view profile and button for edit profile
+	localhost:4200/alumni/messages				->	view or send messages
+	localhost:4200/alumni/editprofile			->	edit profile, details and password			

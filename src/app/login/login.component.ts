@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
   doLogin(ngFormObj:NgForm){
     let userObj=ngFormObj.value;
     console.log(userObj);
+    if(userObj.role=="user"&&userObj.username=="gudia"&&userObj.password=="gudia")
+    {
+      console.log("OKAY");
+    }
   }
 }
 

@@ -14,41 +14,43 @@ dbo.initDb();
 
 //req handler for user registration
 alumniApp.post('/register',(req,res)=>{
-    console.log("req body is ",req.body);
+    //console.log("req body is ",req.body);
 
-    var alumniCollectionObj=dbo.getDb().alumnicollectionObj;
-    // //check for a user in user colection with the "username" recieved from client
-    // alumniCollectionObj.findOne({username:req.body.username},(err,userObjDb)=>{
-    //     if(err)
-    //     {
-    //         next(err);
-    //         console.log("error",err);
-    //     }
-    //     else if(userObjDb!=null)
-    //     {
-    //         res.send({message:"already exists"});
-    //     }
-    //     else
-    //     {
-    //         //hash pass
-    //         var hashedPassword = bcrypt.hashSync(req.body.password,7);
-    //         req.body.password=hashedPassword;
-    //         userCollectionObj.insertOne(req.body,(err,success)=>{
-    //             if(err)
-    //             console.log("error",err);
-    //             else
-    //             {
-    //                 res.send({message:"successfully created"});
-    //             }
-    //         });
-    //     }
-    // })
+    var alumniCollectionObj=dbo.getDb().alumniobj;
+    console.log(alumniCollectionObj);
+    
+    //check for a user in user colection with the "username" recieved from client
+    alumniCollectionObj.findOne({username:req.body.username},(err,userObjDb)=>{
+        if(err)
+        {
+            //next(err);
+            console.log("error",err);
+        }
+        else if(userObjDb!=null)
+        {
+            res.send({message:"already exists"});
+        }
+        else
+        {
+            //hash pass
+            var hashedPassword = bcrypt.hashSync(req.body.password,7);
+            req.body.password=hashedPassword;
+            alumniCollectionObj.insertOne(req.body,(err,success)=>{
+                if(err)
+                console.log("error",err);
+                else
+                {
+                    res.send({message:"successfully created"});
+                }
+            });
+        }
+    })
     
 });
 
 //login req handler
 alumniApp.post('/login',(req,res)=>{
-    var alumniCollectionObj=dbo.getDb().alumnicollectionObj;
+    var alumniCollectionObj=dbo.getDb().alumniobj;
     //verify username
     alumniCollectionObj.findOne({username:req.body.username},(err,userObj)=>{
         if(err)

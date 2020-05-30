@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'alumni/dashboard',component:DashboardComponent},
-  {path:'**',component:PagenotfoundComponent}
+  // {path:'**',component:PagenotfoundComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/login.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  username:string="";
+  constructor(private ls:LoginService, private hc:HttpClient,private ar:ActivatedRoute,private router:Router) { }
+  ngOnInit():void {
+    this.ar.paramMap.subscribe((result)=>{
+      this.username=result.get("username");
+    })
   }
 
 }

@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AlumniModule } from './alumni/alumni.module';
+import { DirectorateModule } from './directorate/directorate.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    AlumniModule,
+    DirectorateModule
     
   ],
   providers: [],

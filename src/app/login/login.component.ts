@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           this.ls.isLoggedIn=true;
 
           //navigate to alumni dashboard component
-          this.router.navigate(['./dashboard']);
+          this.router.navigate(['./dashboard',res["username"]]);
         }
       });
     }

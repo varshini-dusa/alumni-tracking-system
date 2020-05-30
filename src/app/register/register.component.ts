@@ -15,11 +15,24 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  
   submitForm(userObj:NgForm)
   {
-    let userOb=userObj.value;
-    console.log(userOb);  
+    //console.log(userObj);
+
+    // let userOb = JSON.stringify(userObj.value);
+    this.rs.doRegister(userObj.value).subscribe((res)=>{
+      if(res["message"]=="already exists")
+      {
+        alert("already exists");
+        userObj.reset();
+      }
+      if(res["message"]=="successfully created")
+      {
+        alert("registered successfully");
+        this.router.navigate(['./login']);
+      }
+    });
   }
+
 
 }

@@ -10,6 +10,6 @@ export class RegisterService {
   constructor(private hc:HttpClient) { }
   doRegister(userObj):Observable < any >
    {
-     return this.hc.post('/user/register',userObj);
+     return this.hc.post('/alumni/register',userObj);
    }
 }

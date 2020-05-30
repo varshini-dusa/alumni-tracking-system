@@ -14,12 +14,11 @@ export class LoginService {
   //to user login
   login(userObj):Observable<any>
   {
-    return this.hc.post('/user/login',userObj);
+    return this.hc.post('/alumni/login',userObj);
   }
   //to user logout
   logout()
   {
-    // localStorage.removeItem("token");
     //remove token from local storage
     localStorage.removeItem("signedJwtToken");
     //set user login status to false

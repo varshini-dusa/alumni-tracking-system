@@ -8,6 +8,6 @@ import { RegisterService } from './register.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'alumni-tracking-system';
+  // title = 'alumni-tracking-system';
   constructor(public ls:LoginService, public rs:RegisterService){}
 }

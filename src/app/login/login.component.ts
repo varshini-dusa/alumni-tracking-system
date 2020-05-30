@@ -23,10 +23,46 @@ export class LoginComponent implements OnInit {
   doLogin(ngFormObj:NgForm){
     let userObj=ngFormObj.value;
     console.log(userObj);
-    if(userObj.role=="user"&&userObj.username=="gudia"&&userObj.password=="gudia")
+    
+    //admin validation & verification
+    if(userObj.role=="admin")
     {
-      console.log("OKAY");
+      let adminUsername="admin";
+      let adminPassword="admin";
+      //check for username
+      if(userObj.username!=adminUsername)
+      {
+        alert("admin's username is invalid");
+      }
+      //check for password
+      if(userObj.password!=adminPassword){}
+    }
+    //user validation & verification
+    if(userObj.role=="user"){
+      this.ls.login(userObj).subscribe((res)=>{
+        if(res["message"]=="invalid username")
+        {
+          alert("invalid username..plz try again");
+          ngFormObj.reset();
+        }
+        if(res["message"]=="invalid password"){
+          alert("invalid password..plz try again");
+          ngFormObj.reset();
+        }
+        if(res["message"]=="success"){
+          //store token in local storage
+          localStorage.setItem("signedJwtToken",res["token"]);
+
+          //update user status in Login Service
+          this.ls.LoggedInUsername=res["username"];
+          this.ls.isLoggedIn=true;
+
+          //navigate to alumni dashboard component
+          this.router.navigate(['./dashboard',res["username"]]);
+        }
+      });
     }
   }
+
 }
 

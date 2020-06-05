@@ -6,33 +6,30 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   //inject register service
-  constructor(private rs:RegisterService,private router:Router) { }
+  constructor(private rs: RegisterService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  submitForm(userObj:NgForm)
-  {
-    //console.log(userObj);
+  submitForm(userObj: NgForm) {
+    console.log(userObj);
 
     // let userOb = JSON.stringify(userObj.value);
-    this.rs.doRegister(userObj.value).subscribe((res)=>{
-      if(res["message"]=="already exists")
-      {
-        alert("already exists");
-        userObj.reset();
+    this.rs.doRegister(userObj.value).subscribe((res) => {
+      if (res['message'] == 'Does not exist') {
+        alert('Entry does not exist');
+        // userObj.reset();
       }
-      if(res["message"]=="successfully created")
-      {
-        alert("registered successfully");
+      if (res['message'] == 'Account already exists') {
+        alert('Account already exists');
+      }
+      if (res['message'] == 'successfully created') {
+        alert('registered successfully');
         this.router.navigate(['./login']);
       }
     });
   }
-
-
 }

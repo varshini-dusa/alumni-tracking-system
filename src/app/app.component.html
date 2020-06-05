@@ -3,30 +3,30 @@
     <!-- Brand -->
     <a class="navbar-brand" href="#">WebPage</a>
 
-     <!-- Toggler/collapsibe Button  -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <!-- Toggler/collapsibe Button  -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavbar"
+    >
       <span class="navbar-toggler-icon"></span>
-    </button> 
+    </button>
 
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="home">Home</a>
         </li>
         <li class="nav-item" *ngIf="!ls.isLoggedIn">
-          <!-- *ngIf="!ls.userLoginStatus"  -->
-          <a class="nav-link" routerLink="login" >Login</a>
+          <a class="nav-link" routerLink="login">Login/Signup</a>
         </li>
         <li class="nav-item" *ngIf="ls.isLoggedIn">
-          <!-- *ngIf="ls.userLoginStatus" -->
           <a class="nav-link" routerLink="login">Logout</a>
         </li>
-        <li class="nav-item" *ngIf="!ls.isLoggedIn">
-          <a class="nav-link" routerLink="register">Register</a>
-        </li>
       </ul>
-     </div>
+    </div>
   </nav>
   <div>
     <router-outlet></router-outlet>

@@ -1,2 +1,6 @@
-
-<p>HELLO, {{username}}</p>
+<a routerLink="profile">User profile</a>
+<p>HELLO, {{ username }}</p>
+<p>{{ userObj?.branch }}</p>
+<div>
+  <router-outlet></router-outlet>
+</div>

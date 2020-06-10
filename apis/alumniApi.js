@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 
 //import bcrypt
 var bcrypt = require("bcrypt");
-
 //use body parsing middleware
 alumniApp.use(exp.json());
 
@@ -109,12 +108,36 @@ alumniApp.post("/login", (req, res) => {
   );
 });
 
+//search get req handler
+alumniApp.post("/search", (req, res) => {
+  // console.log("req body is", req.body);
+  var alumniCollectionObj = dbo.getDb().alumniobj;
+  alumniCollectionObj
+    .find({
+      $or: [
+        {
+          "name.first": req.body.name,
+        },
+        { "education.0.place": req.body.college },
+        { "batch.joining": req.body.year },
+      ],
+    })
+    .toArray(function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        // console.log(result);
+        res.send({ message: "found", result: result });
+      }
+    });
+});
+
 //req handlers of user
 //http://localhost:port/user/readprofile/<user-name>    (GET)
 alumniApp.get("/:username", (req, res) => {
   // res.send({message:"user profile works"});
   //check the argument
-  console.log(req.params); //{username:"ravi"}
+  // console.log(req.params); //{username:"ravi"}
   //get "userCollectionObj" from req.app.locals object
   // let userCollectionObj = req.app.locals.userCollectionObj;
   var userCollectionObj = dbo.getDb().alumniobj;

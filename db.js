@@ -29,7 +29,7 @@ function initDb() {
 }
 
 function getDb() {
-  console.log(dbo, "Db has not been initialised. Please called initDb");
+  // console.log(dbo,"Db has not been initialised. Please called initDb");
   return {
     alumniobj: alumnicollectionObj,
   };

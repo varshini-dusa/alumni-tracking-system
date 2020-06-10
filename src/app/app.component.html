@@ -23,6 +23,9 @@
           <a class="nav-link" routerLink="login">Login/Signup</a>
         </li>
         <li class="nav-item" *ngIf="ls.isLoggedIn">
+          <a class="nav-link" routerLink="alumni/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="ls.isLoggedIn">
           <a class="nav-link" routerLink="login">Logout</a>
         </li>
       </ul>

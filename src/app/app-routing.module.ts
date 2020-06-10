@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'login/register', component: RegisterComponent },
-  // { path: 'alumni/dashboard', component: DashboardComponent },
+  { path: 'alumni/dashboard', component: DashboardComponent },
   // {path:'**',component:PagenotfoundComponent}
 ];
 

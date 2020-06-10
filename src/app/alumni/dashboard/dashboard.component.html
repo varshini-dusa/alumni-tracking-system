@@ -1,6 +1,26 @@
-<a routerLink="profile">User profile</a>
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="events">Events</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="notices">Notices</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="members">Members</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="messages">Messages</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="profile">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="editprofile">Edit Profile</a>
+  </li>
+</ul>
 <p>HELLO, {{ username }}</p>
-<p>{{ userObj?.branch }}</p>
+<!-- <p>{{ userObj?.branch }}</p>
+<p>{{ userObj?.dob }}</p> -->
 <div>
   <router-outlet></router-outlet>
 </div>

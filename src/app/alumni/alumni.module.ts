@@ -9,13 +9,18 @@ import { EventsComponent } from './events/events.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { MessagesComponent } from './messages/messages.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [DashboardComponent, MembersComponent, NoticesComponent, EventsComponent, ProfileComponent, EditprofileComponent, MessagesComponent],
-  imports: [
-    CommonModule,
-    AlumniRoutingModule
-  ]
+  declarations: [
+    DashboardComponent,
+    MembersComponent,
+    NoticesComponent,
+    EventsComponent,
+    ProfileComponent,
+    EditprofileComponent,
+    MessagesComponent,
+  ],
+  imports: [CommonModule, AlumniRoutingModule, FormsModule],
 })
-export class AlumniModule { }
+export class AlumniModule {}

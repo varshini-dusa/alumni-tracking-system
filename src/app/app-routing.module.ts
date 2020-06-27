@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DashboardComponent } from './alumni/dashboard/dashboard.component';
+import { AdminpageComponent } from './directorate/adminpage/adminpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'login/register', component: RegisterComponent },
   { path: 'alumni/dashboard', component: DashboardComponent },
+  { path: 'directorate/adminpage', component: AdminpageComponent },
   // {path:'**',component:PagenotfoundComponent}
 ];
 

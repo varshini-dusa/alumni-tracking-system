@@ -9,8 +9,12 @@ import { ProfileService } from 'src/app/profile.service';
 export class ProfileComponent implements OnInit {
   constructor(private ps: ProfileService) {}
   userObj: any = null;
+  edu: any = null;
   ngOnInit(): void {
     this.userObj = this.ps.userObj;
+    this.userObj.fullName =
+      this.userObj.name['first'] + ' ' + this.userObj.name['last'];
+    this.edu = this.userObj.education;
     // console.log(this.userObj);
   }
 }

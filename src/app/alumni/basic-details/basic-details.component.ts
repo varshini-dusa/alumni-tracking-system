@@ -3,14 +3,13 @@ import { ProfileService } from 'src/app/profile.service';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/app/login.service';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-editprofile',
-  templateUrl: './editprofile.component.html',
-  styleUrls: ['./editprofile.component.css'],
+  selector: 'app-basic-details',
+  templateUrl: './basic-details.component.html',
+  styleUrls: ['./basic-details.component.css'],
 })
-export class EditprofileComponent implements OnInit {
+export class BasicDetailsComponent implements OnInit {
   constructor(
     private ps: ProfileService,
     private hc: HttpClient,
@@ -29,11 +28,12 @@ export class EditprofileComponent implements OnInit {
     userObj['username'] = this.ls.LoggedInUsername;
     // console.log(userObj);
 
+    userObj['type'] = 'basic';
     this.hc.post('/alumni/editprofile', userObj).subscribe((res: object) => {
       if (res['message'] == 'edit profile works') {
-        alert('edit profile works');
+        console.log('edit profile works');
       } else {
-        alert('User not existed');
+        console.log('User not existed');
       }
     });
   }

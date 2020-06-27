@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="#">WebPage</a>
@@ -22,8 +22,11 @@
         <li class="nav-item" *ngIf="!ls.isLoggedIn">
           <a class="nav-link" routerLink="login">Login/Signup</a>
         </li>
-        <li class="nav-item" *ngIf="ls.isLoggedIn">
+        <li class="nav-item" *ngIf="ls.isLoggedIn && !ls.isAdmin">
           <a class="nav-link" routerLink="alumni/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="ls.isLoggedIn && ls.isAdmin">
+          <a class="nav-link" routerLink="directorate/adminpage">Dashboard</a>
         </li>
         <li class="nav-item" *ngIf="ls.isLoggedIn">
           <a class="nav-link" routerLink="login">Logout</a>

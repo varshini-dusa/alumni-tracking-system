@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit {
         alert("admin's username is invalid");
       }
       //check for password
-      if (userObj.password != adminPassword) {
+      else if (userObj.password != adminPassword) {
+      } else {
+        this.ls.isLoggedIn = true;
+        this.ls.LoggedInUsername = adminUsername;
+        this.ls.isAdmin = true;
+        this.router.navigate(['./adminpage']);
       }
     }
     //user validation & verification

@@ -1,2 +1,168 @@
-<p>profile works!</p>
-<p>{{ userObj?.branch }}</p>
+<div class="container">
+  <form>
+    <div class="form-group row">
+      <img
+        src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png"
+        alt="Profile Picture"
+        height="100px"
+        width="100px"
+      />
+      <p>{{ userObj?.fullName }}</p>
+    </div>
+    <h3>Basic Details</h3>
+    <hr />
+    <div class="form-group row">
+      <label for="dob" class="col-sm-2 col-form-label">Date of Birth:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="dob"
+          class="form-control-plaintext"
+          value="{{ userObj?.dob }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="gender" class="col-sm-2 col-form-label">Gender:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="gender"
+          class="form-control-plaintext"
+          value="{{ userObj?.gender }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="city" class="col-sm-2 col-form-label">City:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="city"
+          class="form-control-plaintext"
+          value="{{ userObj?.city }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="mail" class="col-sm-2 col-form-label">Email:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="mail"
+          class="form-control-plaintext"
+          value="{{ userObj?.email }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="phn" class="col-sm-2 col-form-label">Phone Number:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="phn"
+          class="form-control-plaintext"
+          value="{{ userObj?.phnnum }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="branch" class="col-sm-2 col-form-label">Branch:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="branch"
+          class="form-control-plaintext"
+          value="{{ userObj?.branch }}"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="joining" class="col-form-label col-sm-2"
+        >Year of Joining:</label
+      >
+      <input
+        type="text"
+        readonly
+        id="joining"
+        class="form-control-plaintext col-sm-4"
+        value="{{ (userObj?.batch)['joining'] }}"
+      />
+      <label for="passing" class="col-form-label col-sm-2"
+        >Year of Passing:</label
+      >
+      <input
+        type="text"
+        readonly
+        id="passing"
+        class="form-control-plaintext col-sm-4"
+        value="{{ (userObj?.batch)['passing'] }}"
+      />
+    </div>
+  </form>
+  <h3>Contact Details</h3>
+  <hr />
+  <form>
+    <div class="form-group row">
+      <label for="hometown" class="col-sm-2 col-form-label">Hometown:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="hometown"
+          class="form-control-plaintext"
+          value="{{ (userObj?.contact)['hometown'] }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="add" class="col-sm-2 col-form-label">Address:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="add"
+          class="form-control-plaintext"
+          value="{{ (userObj?.contact)['address']['add'] }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="code" class="col-sm-2 col-form-label">Postal Code:</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          readonly
+          id="code"
+          class="form-control-plaintext"
+          value="{{ (userObj?.contact)['address']['postalcode'] }}"
+        />
+      </div>
+    </div>
+  </form>
+  <div>
+    <h3>Education Details</h3>
+    <hr />
+    <div class="container">
+      <div *ngFor="let user of edu">
+        <div class="form-group row">
+          <h5>{{ user.degree }}</h5>
+        </div>
+        <div class="form-group row">
+          <p>{{ user.year.from }} - {{ user.year.to }}</p>
+        </div>
+        <div class="form-group row">
+          <p>
+            {{ user.place }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

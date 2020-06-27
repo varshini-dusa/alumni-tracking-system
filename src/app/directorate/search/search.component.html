@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <h4>SEARCH</h4>
+    <form #ref="ngForm" (ngSubmit)="doSearch(ref)">
+      <div class="form-group">
+        <label for="name">NAME</label>
+        <input type="text" name="name" id="name" class="form-control" ngModel />
+      </div>
+      <div class="form-group">
+        <label for="college">COLLEGE</label>
+        <select name="college" id="college" class="form-control" ngModel>
+          <option
+            value="VNR Vignana Jyothi Institute of Engineering and Technology"
+            name="vnr"
+            >VNRVJIET</option
+          >
+          <option
+            value="Sreenidhi Institute of Science and Technology"
+            name="srinidhi"
+            >Sreenidhi</option
+          >
+          <option value="Chaitanya Bharathi Institute of Technology" name="bits"
+            >CBIT</option
+          >
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="year">YEAR</label>
+        <select name="year" id="year" class="form-control" ngModel>
+          <option value="2019" name="2019">2019</option>
+          <option value="2020" name="2020">2020</option>
+          <option value="2021" name="2021">2021</option>
+        </select>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="container">
+      <div class="row row1">
+        <div class="col-sm-4" *ngFor="let res of resObj">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ res.name.first }} {{ res.name.last }}
+              </h5>
+              <p class="card-text">
+                {{ res.education[0].degree }} <br />
+                {{ res.education[0].year.to }} <br />
+                {{ res.branch }}
+              </p>
+              <p class="card-text">
+                <small class="text-muted">{{ res.education[0].place }}</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3"></div>
+</div>

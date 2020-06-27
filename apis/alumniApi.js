@@ -91,7 +91,7 @@ alumniApp.post("/login", (req, res) => {
               (err, signedToken) => {
                 if (err) {
                   console.log("err ", err);
-                  next(err);
+                  // next(err);
                 } else {
                   res.send({
                     message: "success",
@@ -108,30 +108,6 @@ alumniApp.post("/login", (req, res) => {
   );
 });
 
-//search get req handler
-alumniApp.post("/search", (req, res) => {
-  // console.log("req body is", req.body);
-  var alumniCollectionObj = dbo.getDb().alumniobj;
-  alumniCollectionObj
-    .find({
-      $or: [
-        {
-          "name.first": req.body.name,
-        },
-        { "education.0.place": req.body.college },
-        { "batch.joining": req.body.year },
-      ],
-    })
-    .toArray(function (err, result) {
-      if (err) {
-        console.log(err);
-      } else {
-        // console.log(result);
-        res.send({ message: "found", result: result });
-      }
-    });
-});
-
 //req handlers of user
 //http://localhost:port/user/readprofile/<user-name>    (GET)
 alumniApp.get("/:username", (req, res) => {
@@ -146,7 +122,8 @@ alumniApp.get("/:username", (req, res) => {
     { username: req.params.username },
     (err, userObj) => {
       if (err) {
-        next(err);
+        // next(err);
+        console.log(err);
       } else if (userObj == null) {
         //if user not existed
         res.send({ message: `${req.params.username} not existed` });
@@ -155,6 +132,72 @@ alumniApp.get("/:username", (req, res) => {
       }
     }
   );
+});
+
+//req handlers of user
+//http://localhost:port/user/readprofile/<user-name>    (GET)
+alumniApp.post("/editprofile", (req, res) => {
+  let obj = req.body;
+  Object.keys(obj).forEach(
+    (k) => !obj[k] && obj[k] !== undefined && delete obj[k]
+  );
+  var filter = {};
+  if (obj.about != undefined) filter.about = obj.about;
+  if (obj.phnnum != undefined) filter.phnnum = obj.phnnum;
+  if (obj.city != undefined) filter.city = obj.city;
+  if (obj.hometown != undefined) filter["contact.hometown"] = obj.hometown;
+  if (obj.address != undefined) filter["contact.address.add"] = obj.address;
+  if (obj.postal != undefined)
+    filter["contact.address.postalcode"] = obj.postal;
+  if (obj.degree != undefined) {
+    filter["degree"] = obj.degree;
+    filter["year"] = {};
+    filter["year"]["from"] = obj.joining;
+    filter["year"]["to"] = obj.passing;
+    filter["place"] = obj.place;
+  }
+  if (obj.position != undefined) {
+    filter["position"] = obj.position;
+    filter["company"] = obj.company;
+    filter["branch"] = obj.branch;
+    filter["join"] = obj.join;
+  }
+  var userCollectionObj = dbo.getDb().alumniobj;
+  if (Object.keys(filter).length != 0) {
+    if (obj.type == "basic" || obj.type == "contact") {
+      userCollectionObj.findOneAndUpdate(
+        { username: req.body.username },
+        { $set: filter },
+        { upsert: true },
+        (err, userObj) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send({ message: "edit profile works" });
+          }
+        }
+      );
+    } else {
+      let filter1;
+      if (obj.type == "education") {
+        filter1 = { education: filter };
+      } else {
+        filter1 = { work: filter };
+      }
+      userCollectionObj.findOneAndUpdate(
+        { username: req.body.username },
+        { $push: filter1 },
+        { upsert: true },
+        (err, userObj) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send({ message: "edit profile works" });
+          }
+        }
+      );
+    }
+  }
 });
 
 //export alumniApp

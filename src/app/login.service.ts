@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   LoggedInUsername: string;
   //inject HttpClient
   constructor(private hc: HttpClient) {}
@@ -20,5 +21,6 @@ export class LoginService {
     localStorage.removeItem('signedJwtToken');
     //set user login status to false
     this.isLoggedIn = false;
+    this.isAdmin = false;
   }
 }

@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       }
       //check for password
       else if (userObj.password != adminPassword) {
+        alert("admin's password is invalid");
       } else {
         this.ls.isLoggedIn = true;
         this.ls.LoggedInUsername = adminUsername;

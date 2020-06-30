@@ -11,6 +11,7 @@ export class LoginService {
   LoggedInUsername: string;
   //inject HttpClient
   constructor(private hc: HttpClient) {}
+
   //to user login
   login(userObj): Observable<any> {
     return this.hc.post('/alumni/login', userObj);

@@ -1,1 +1,10 @@
-<p>messages works!</p>
+<div class="container">
+  <ul class="list-group" *ngFor="let m of mess">
+    <li class="list-group-item">
+      {{ m.message }}
+      {{ m.sentBy }}
+      {{ m.sentTime }}
+      {{ m.sentDate }}
+    </li>
+  </ul>
+</div>

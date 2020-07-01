@@ -67,6 +67,7 @@ directorApp.post("/sendMessage", (req, res) => {
   obj["message"] = req.body.message;
   obj["sentTime"] = hours + ":" + minutes + ":" + seconds;
   obj["sentDate"] = year + "-" + month + "-" + date;
+
   var alumniCollectionObj = dbo.getDb().alumniobj;
   alumniCollectionObj.updateMany(
     { $or: [{ username: req.body.username }, { username: "admin" }] },
@@ -80,7 +81,34 @@ directorApp.post("/sendMessage", (req, res) => {
           if (err) {
             console.log(err);
           } else {
-            res.send({ message: "Message sent", userObj: userObj });
+            alumniCollectionObj.updateOne(
+              { username: req.body.username },
+              {
+                $inc: { notification: 1 },
+                $push: {
+                  notifyQueue:
+                    "Message from admin at " +
+                    hours +
+                    ":" +
+                    minutes +
+                    ":" +
+                    seconds +
+                    " " +
+                    year +
+                    "-" +
+                    month +
+                    "-" +
+                    date,
+                },
+              },
+              (err, notiObj) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  res.send({ message: "Message sent", userObj: userObj });
+                }
+              }
+            );
           }
         });
       }

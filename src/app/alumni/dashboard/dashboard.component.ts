@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
     private hc: HttpClient,
     private ar: ActivatedRoute,
     private router: Router,
-    private ps: ProfileService
+    public ps: ProfileService
   ) {}
   ngOnInit(): void {
     //disabling login
@@ -30,6 +30,9 @@ export class DashboardComponent implements OnInit {
       if (res['message'] == 'user existed') {
         this.userObj = res['userObj'];
         this.ps.userObj = this.userObj;
+        if (this.ps.userObj.notification > 0) {
+          this.ps.isNotificationOn = true;
+        }
       } else {
         alert('User not existed');
       }

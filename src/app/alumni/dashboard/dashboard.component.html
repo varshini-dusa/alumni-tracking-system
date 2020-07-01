@@ -6,7 +6,12 @@
     <a class="nav-link" routerLink="messages">Messages</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="notifications">Notifications</a>
+    <a class="nav-link" routerLink="notifications"
+      >Notifications
+      <span class="badge badge-light" *ngIf="ps.isNotificationOn">{{
+        userObj.notification
+      }}</span>
+    </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" routerLink="profile">Profile</a>

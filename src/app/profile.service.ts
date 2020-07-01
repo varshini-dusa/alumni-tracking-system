@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
   userObj: any = null;
+  isNotificationOn: boolean;
   constructor() {}
 }

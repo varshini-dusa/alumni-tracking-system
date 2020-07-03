@@ -31,24 +31,30 @@ directorApp.get("/admin", (req, res) => {
 directorApp.post("/search", (req, res) => {
   // console.log("req body is", req.body);
   var alumniCollectionObj = dbo.getDb().alumniobj;
-  alumniCollectionObj
-    .find({
-      $or: [
-        {
-          "name.first": req.body.name,
-        },
-        { "education.0.place": req.body.college },
-        { "batch.passing": req.body.year },
-      ],
-    })
-    .toArray(function (err, result) {
-      if (err) {
-        console.log(err);
-      } else {
-        // console.log(result);
-        res.send({ message: "found", result: result });
-      }
-    });
+  var obj = req.body;
+  Object.keys(obj).forEach(
+    (k) => !obj[k] && obj[k] !== undefined && delete obj[k]
+  );
+  if (obj.name != undefined) {
+    obj["name.first"] = obj.name;
+    delete obj["name"];
+  }
+  if (obj.college != undefined) {
+    obj["education.0.place"] = obj.college;
+    delete obj["college"];
+  }
+  if (obj.year != undefined) {
+    obj["batch.passing"] = obj.year;
+    delete obj["year"];
+  }
+  alumniCollectionObj.find(obj).toArray(function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      // console.log(result);
+      res.send({ message: "found", result: result });
+    }
+  });
 });
 
 //sendMessage req handler

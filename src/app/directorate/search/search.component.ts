@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
     private ps: ProfileService
   ) {}
 
+  searchResults: any = null;
   ngOnInit(): void {}
   resObj: any;
   userObj: any = null;
@@ -27,7 +28,7 @@ export class SearchComponent implements OnInit {
     this.hc.post('/director/search', searchObj).subscribe((res) => {
       if (res['message'] == 'found') {
         this.resObj = res['result'];
-        // console.log(this.resObj);
+        // console.log(this.resObj.count());
       }
     });
   }

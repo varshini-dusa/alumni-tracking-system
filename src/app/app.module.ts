@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule} from '@angular/common/http'
-import { FormsModule} from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -11,14 +11,14 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AlumniModule } from './alumni/alumni.module';
 import { DirectorateModule } from './directorate/directorate.module';
-
+import * as $ from 'jquery';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,10 +26,9 @@ import { DirectorateModule } from './directorate/directorate.module';
     FormsModule,
     HttpClientModule,
     AlumniModule,
-    DirectorateModule
-    
+    DirectorateModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

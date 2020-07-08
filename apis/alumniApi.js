@@ -5,11 +5,64 @@ const jwt = require("jsonwebtoken");
 
 //import bcrypt
 var bcrypt = require("bcrypt");
+
 //use body parsing middleware
 alumniApp.use(exp.json());
 
 const dbo = require("../db");
+
 dbo.initDb();
+
+//import modules related to cloudinary
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require("multer");
+require("dotenv").config();
+//configure cloudinary
+cloudinary.config({
+  cloud_name: process.env.cloud_name,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret,
+});
+
+//configure cloudinary storage
+const storageForCloudinary = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  allowedFormats: ["jpg", "png"],
+  filename: function (req, file, cb) {
+    cb(undefined, file.fieldname + "-" + Date.now());
+  },
+});
+//configure multer
+var upload = multer({ storage: storageForCloudinary });
+
+//req handler for user registration
+alumniApp.post("/upload", upload.single("photo"), (req, res) => {
+  console.log(req.file);
+
+  console.log("CDN link of uploaded is ", req.file.path);
+  console.log("req body is ", req.body);
+  console.log("obj received from client is ", req.body);
+  //prepare req.body
+  req.body = JSON.parse(req.body.userObj);
+
+  req.body.profileImage = req.file.path;
+
+  //remove key "photo"
+  delete req.body.photo;
+
+  //get usercollection object from "req.app.locals" object
+  // let userCollectionObj = req.app.locals.userCollectionObj;
+
+  var userCollectionObj = dbo.getDb().uploadobj;
+
+  userCollectionObj.insertOne(req.body, (err, success) => {
+    if (err) console.log("error", err);
+    else {
+      res.send({ message: "successfully created" });
+    }
+  });
+});
 
 //req handler for user registration
 alumniApp.post("/register", (req, res) => {

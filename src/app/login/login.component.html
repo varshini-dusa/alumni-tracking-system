@@ -1,69 +1,76 @@
-<div class="row">
-  <div class="col-sm-3"></div>
-  <div class="col-sm-6">
-    <h1>LOGIN</h1>
+<div id="content">
+  <div class="card mx-auto">
     <form #ref="ngForm" (ngSubmit)="doLogin(ref)">
-      <!-- create radio buttons to represent role -->
-      <label for="">Choose role</label>
-      <div class="form-check">
-        <input
-          type="radio"
-          name="role"
-          id="adm"
-          class="form-check-input"
-          value="admin"
-          ngModel
-          required
-        />
-        <label for="adm" class="form-check-label">Admin</label>
-      </div>
-      <div class="form-check">
-        <input
-          type="radio"
-          name="role"
-          id="usr"
-          class="form-check-input"
-          value="user"
-          ngModel
-          required
-        />
-        <label for="usr" class="form-check-label">User</label>
-      </div>
+      <div class="card-body">
+        <h1 class="card-title text-center">Login</h1>
+        <div class="card-subtitle mb-2">
+          <h5>Choose role</h5>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="role"
+              id="adm"
+              class="form-check-input"
+              value="admin"
+              ngModel
+              required
+            />
+            <label for="adm" class="form-check-label">Admin</label>
+          </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              name="role"
+              id="usr"
+              class="form-check-input"
+              value="user"
+              ngModel
+            />
+            <label for="usr" class="form-check-label">User</label>
+          </div>
+        </div>
+        <div class="card-text">
+          <!-- username -->
+          <div class="form-group" ng-class="{ 'not-empty': username.length }">
+            <input
+              type="text"
+              name="username"
+              id="un"
+              ngModel
+              ng-model="username"
+              class="form-control"
+              required
+            />
+            <label for="un" class="animated-label">Username</label>
+          </div>
 
-      <!-- username -->
-      <div class="form-group">
-        <label for="un">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="un"
-          ngModel
-          class="form-control"
-          required
-          #ref1="ngModel"
-        />
-      </div>
-
-      <!-- password -->
-      <div class="form-group">
-        <label for="pw">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="pw"
-          ngModel
-          class="form-control"
-          required
-          #ref2="ngModel"
-        />
-      </div>
-
-      <!-- login button -->
-      <div class="text-center">
-        <button type="submit" class="btn btn-success">Login</button>
+          <!-- password -->
+          <div class="form-group" ng-class="{ 'not-empty': password.length }">
+            <input
+              type="password"
+              name="password"
+              id="pw"
+              ng-model="password"
+              ngModel
+              class="form-control"
+              required
+            /><label for="pw" class="animated-label">Password</label>
+          </div>
+        </div>
+        <div class="card-text">
+          <div class="text-center">
+            <input
+              type="submit"
+              value="Login"
+              id="login-btn"
+              class="btn btn-success"
+            />
+          </div>
+          <p id="signup">
+            Don't have an account? <a routerLink="register">Signup here!</a>
+          </p>
+        </div>
       </div>
     </form>
-    <p>Don't have an account? <a routerLink="register">Signup here!</a></p>
   </div>
-  <div class="col-sm-3"></div>
 </div>

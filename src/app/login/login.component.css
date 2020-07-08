@@ -1,0 +1,85 @@
+.card {
+  width: 25rem;
+  padding: 1rem;
+}
+
+.card-title {
+  margin-bottom: 1rem;
+}
+
+#content {
+  margin: 3rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#un,
+#pw {
+  width: 90%;
+}
+#signup,
+#login-btn {
+  margin-top: 1rem;
+}
+
+.form-group {
+  position: relative;
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+.form-group .animated-label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  font-weight: 300;
+  opacity: 0.5;
+  cursor: text;
+  transition: 0.2s ease all;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.form-group .animated-label:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  height: 2px;
+  width: 10px;
+  visibility: hidden;
+  /* display: none; */
+  background-color: #8e44ad;
+  transition: 0.2s ease all;
+}
+.form-group.not-empty .animated-label {
+  top: 0;
+  font-size: 12px;
+  /* background-color: aqua; */
+}
+.form-group .form-control {
+  position: relative;
+  z-index: 1;
+  border-radius: 0;
+  border-width: 0 0 1px;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  height: auto;
+  padding: 3px 0 5px;
+}
+.form-group .form-control:focus {
+  box-shadow: none;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+.form-group .form-control:focus ~ .animated-label {
+  top: 0;
+  opacity: 1;
+  color: #8e44ad;
+  font-size: 12px;
+}
+.form-group .form-control:focus ~ .animated-label:after {
+  visibility: visible;
+  width: 100%;
+  left: 0;
+}

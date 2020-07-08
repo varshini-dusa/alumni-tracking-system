@@ -1,0 +1,17 @@
+.card {
+  width: 50%;
+  padding: 1rem;
+}
+
+.card-title {
+  margin-bottom: 1rem;
+}
+
+#content {
+  margin: 3rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#register-btn {
+  margin-top: 1rem;
+}

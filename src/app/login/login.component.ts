@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../login.service';
 import { NgForm } from '@angular/forms';
 
@@ -10,14 +10,20 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   //inject Router object
-  constructor(private router: Router, private ls: LoginService) {}
+  constructor(
+    private router: Router,
+    private ls: LoginService,
+    private ac: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.ls.logout();
     }, 0);
   }
-
+  goRegister() {
+    this.router.navigate(['../register'], { relativeTo: this.ac });
+  }
   doLogin(ngFormObj: NgForm) {
     let userObj = ngFormObj.value;
     // console.log(userObj);

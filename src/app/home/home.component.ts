@@ -14,4 +14,7 @@ export class HomeComponent implements OnInit {
   goLogin() {
     this.router.navigate(['../login'], { relativeTo: this.ac });
   }
+  goRegister() {
+    this.router.navigate(['../register'], { relativeTo: this.ac });
+  }
 }

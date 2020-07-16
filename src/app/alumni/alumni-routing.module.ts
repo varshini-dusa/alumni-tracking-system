@@ -16,6 +16,7 @@ const routes: Routes = [
     path: 'dashboard/:username',
     component: DashboardComponent,
     children: [
+      { path: '', component: PostsComponent },
       { path: 'posts', component: PostsComponent },
       { path: 'profile', component: ProfileComponent },
       {

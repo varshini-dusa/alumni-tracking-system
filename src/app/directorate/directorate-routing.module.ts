@@ -11,6 +11,7 @@ const routes: Routes = [
     path: 'adminpage',
     component: AdminpageComponent,
     children: [
+      { path: '', component: PostsComponent },
       { path: 'posts', component: PostsComponent },
       { path: 'messages', component: MessagesComponent },
       { path: 'notifications', component: NotificationsComponent },

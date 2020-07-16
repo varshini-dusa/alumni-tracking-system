@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+  font-family: "Montserrat";
+  margin: 0rem;
+  padding: 0rem;
+  color: #dff6f0;
+  background-color: #4d80e4;
+  /* background-color: black; */
+}
+
+p,
+a:link,
+a:visited {
+  color: #dff6f0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat";
+  line-height: 1.5;
+  font-weight: 900;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

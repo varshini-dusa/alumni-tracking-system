@@ -10,15 +10,18 @@
 #content {
   margin: 3rem;
   font-family: "Roboto", sans-serif;
+  color: #4d80e4;
+  text-align: left;
 }
 
 #un,
 #pw {
   width: 90%;
 }
-#signup,
+
 #login-btn {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .form-group {
@@ -82,4 +85,10 @@
   visibility: visible;
   width: 100%;
   left: 0;
+}
+
+#signup,
+a {
+  color: #4d80e4;
+  text-align: center;
 }

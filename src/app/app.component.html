@@ -1,40 +1,25 @@
 <div class="container-fluid">
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">AlumniTracking</a>
-
-    <!-- Toggler/collapsibe Button  -->
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="">AppName</a>
     <button
       class="navbar-toggler"
       type="button"
       data-toggle="collapse"
-      data-target="#collapsibleNavbar"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="home">Home</a>
-        </li> -->
-        <li class="nav-item" *ngIf="!ls.isLoggedIn">
-          <a class="nav-link" routerLink="login">Login/Signup</a>
-        </li>
-        <li class="nav-item" *ngIf="ls.isLoggedIn && !ls.isAdmin">
-          <a class="nav-link" routerLink="alumni/dashboard">Dashboard</a>
-        </li>
-        <li class="nav-item" *ngIf="ls.isLoggedIn && ls.isAdmin">
-          <a class="nav-link" routerLink="directorate/adminpage">Dashboard</a>
-        </li>
         <li class="nav-item" *ngIf="ls.isLoggedIn">
           <a class="nav-link" routerLink="login">Logout</a>
         </li>
       </ul>
     </div>
   </nav>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 </div>

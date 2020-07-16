@@ -1,6 +1,8 @@
 .card {
   width: 50%;
-  padding: 1rem;
+  margin: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card-title {
@@ -8,10 +10,10 @@
 }
 
 #content {
-  margin: 3rem;
+  /* margin: 3rem; */
   font-family: "Roboto", sans-serif;
-}
-
-#register-btn {
-  margin-top: 1rem;
+  color: #4d80e4;
+  text-align: start;
+  /* border: 1px solid black; */
+  /* background-color: black; */
 }

@@ -1,0 +1,49 @@
+/* headings section */
+.big-heading {
+  font-family: "Montserrat";
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-weight: 900;
+  margin: 0rem;
+  text-align: left;
+}
+/* title section */
+#title {
+  background-color: #4d80e4;
+  color: #dff6f0;
+  text-align: left;
+}
+.container-fluid {
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+
+.bttn {
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+/* footer section */
+#footer {
+  background-color: #4d80e4;
+  padding-top: 7% 15%;
+}
+.copy {
+  margin: 1%;
+  color: #dff6f0;
+}
+.ic {
+  margin: 1%;
+}
+.title-img {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
+
+section {
+  margin: 0rem;
+  padding: 0rem;
+}

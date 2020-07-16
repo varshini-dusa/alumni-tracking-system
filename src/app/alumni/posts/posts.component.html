@@ -68,14 +68,16 @@
     </div>
   </div>
 </div>
-<div>
-  <div *ngFor="let item of items">
-    <div class="card">
-      <div class="card-body">
-        <img src="{{ item.profileImage }}" alt="" height="150" width="150" />
-        <p class="card-text">
-          <small class="text-muted">{{ item.about }}</small>
-        </p>
+<div class="container">
+  <div id="content row justify-content-center">
+    <div *ngFor="let item of items">
+      <div class="card">
+        <div class="card-body">
+          <img src="{{ item.profileImage }}" alt="" height="150" width="150" />
+          <p class="card-text">
+            <small class="text-muted">{{ item.about }}</small>
+          </p>
+        </div>
       </div>
     </div>
   </div>

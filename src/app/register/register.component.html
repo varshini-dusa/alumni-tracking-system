@@ -1,176 +1,171 @@
-<div id="content">
-  <div class="card mx-auto">
-    <form #ref="ngForm" (ngSubmit)="submitForm(ref)">
-      <div class="card-body">
-        <h1 class="card-title text-center">Register</h1>
-        <div class="card-text">
-          <div class="form-group row">
-            <div class="form-group col-md-3">
-              <label class="col-form-label">Name</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="content">
+    <div class="card mx-auto">
+      <form  name="myForm"#ref="ngForm" (ngSubmit)="submitForm(ref)">
+        <div class="card-body">
+          <h1 class="card-title text-center">Register</h1>
+          <div class="card-text">
+            <div class="form-group row">
+              <div class="form-group col-md-3">
+                <label class="col-form-label">Name</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="first"
+                  id="first"
+                  class="form-control"
+                  placeholder="Name"
+                  ngModel
+                  required
+                />
+                
+              </div>
             </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="first"
-                id="first"
-                class="form-control"
-                placeholder="First Name"
-                ngModel
-              />
+  
+            <div class="form-group row">
+              <div class="form-group col-md-3">
+                <label for="un" class="col-form-label">Username</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="username"
+                  id="un"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="n" class="col-form-label">Password</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="password"
+                  name="password"
+                  id="n"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
             </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="middle"
-                id="middle"
-                class="form-control"
-                placeholder="Middle Name"
-                ngModel
-              />
+  
+            <div class="form-group row">
+              <div class="form-group col-md-3">
+                <label for="dob" class="col-form-label">Date of Birth</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="date"
+                  name="dob"
+                  id="dob"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="roll" class="col-form-label">Roll Number</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="roll"
+                  id="roll"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
             </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="last"
-                id="last"
-                class="form-control"
-                placeholder="Last Name"
-                ngModel
-              />
+  
+            <div class="form-group row">
+              <div class="form-group col-md-3">
+                <label for="Email" class="col-form-label">Email address</label>
+              </div>
+              <div class="form-group col-md-9">
+                <input
+                  type="email"
+                  name="Email"
+                  id="Email"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <div class="form-group col-md-3">
+                <label for="phn" class="col-form-label">Phone Number</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="phn"
+                  id="phn"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="city" class="col-form-label">City</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  class="form-control"
+                  ngModel
+                />
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <div class="form-group col-md-3">
+                <label>Batch</label>
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="joining"
+                  id="joining"
+                  class="form-control"
+                  placeholder="Year of joining"
+                  ngModel
+                />
+              </div>
+              <div class="form-group col-md-3">
+                <input
+                  type="text"
+                  name="passing"
+                  id="passing"
+                  class="form-control"
+                  placeholder="Year of passing"
+                  ngModel
+                />
+              </div>
+              <div class="col-md-3"></div>
             </div>
           </div>
-
-          <div class="form-group row">
-            <div class="form-group col-md-3">
-              <label for="un" class="col-form-label">Username</label>
+          <div class="card-text">
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary" id="register-btn">
+                Register
+              </button>
             </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="username"
-                id="un"
-                class="form-control"
-                ngModel
-              />
-            </div>
-            <div class="form-group col-md-3">
-              <label for="n" class="col-form-label">Password</label>
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="password"
-                name="password"
-                id="n"
-                class="form-control"
-                ngModel
-              />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="form-group col-md-3">
-              <label for="dob" class="col-form-label">Date of Birth</label>
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="date"
-                name="dob"
-                id="dob"
-                class="form-control"
-                ngModel
-              />
-            </div>
-            <div class="form-group col-md-3">
-              <label for="roll" class="col-form-label">Roll Number</label>
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="roll"
-                id="roll"
-                class="form-control"
-                ngModel
-              />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="form-group col-md-3">
-              <label for="Email" class="col-form-label">Email address</label>
-            </div>
-            <div class="form-group col-md-9">
-              <input
-                type="email"
-                name="Email"
-                id="Email"
-                class="form-control"
-                ngModel
-              />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="form-group col-md-3">
-              <label for="phn" class="col-form-label">Phone Number</label>
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="phn"
-                id="phn"
-                class="form-control"
-                ngModel
-              />
-            </div>
-            <div class="form-group col-md-3">
-              <label for="city" class="col-form-label">City</label>
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="city"
-                id="city"
-                class="form-control"
-                ngModel
-              />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="form-group col-md-3">
-              <label>Batch</label>
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="joining"
-                id="joining"
-                class="form-control"
-                placeholder="Year of joining"
-                ngModel
-              />
-            </div>
-            <div class="form-group col-md-3">
-              <input
-                type="text"
-                name="passing"
-                id="passing"
-                class="form-control"
-                placeholder="Year of passing"
-                ngModel
-              />
-            </div>
-            <div class="col-md-3"></div>
           </div>
         </div>
-        <div class="card-text">
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary" id="register-btn">
-              Register
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
+<script>
+  alert("hello");
+</script>  
+</body>
+</html>

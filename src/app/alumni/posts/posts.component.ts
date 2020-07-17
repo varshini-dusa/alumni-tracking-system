@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PostService } from 'src/app/post.service';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-posts',
@@ -14,7 +15,8 @@ export class PostsComponent implements OnInit {
     private router: Router,
     private hc: HttpClient,
     private ac: ActivatedRoute,
-    private ps: PostService
+    private ps: PostService,
+    private ls: LoginService
   ) {}
   items: any;
   // uobj: any;
@@ -28,7 +30,7 @@ export class PostsComponent implements OnInit {
 
     let userOb = userObj.value;
     // console.log(userOb);
-
+    userOb['username'] = this.ls.LoggedInUsername;
     //create obj of type FormData
     let fd = new FormData();
 

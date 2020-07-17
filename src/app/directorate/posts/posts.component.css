@@ -12,3 +12,7 @@
 .modal {
   color: #4d80e4;
 }
+.container {
+  /* border: 1px solid black; */
+  padding-left: 30%;
+}

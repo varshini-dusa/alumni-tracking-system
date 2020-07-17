@@ -1,1 +1,7 @@
-<p>notifications works!</p>
+<div class="container" *ngIf="qPresent">
+  <div class="list-group" *ngFor="let m of queue">
+    <div class="list-group-item">
+      {{ m }}
+    </div>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 <!-- Button trigger modal -->
-<button
+<button 
   type="button"
   class="btn btn-primary"
   data-toggle="modal"
   data-target="#exampleModal"
   id="post-btn"
 >
-  Post
+ Create Post
 </button>
 
 <!-- Modal -->
@@ -68,14 +68,14 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container ">
   <div id="content row justify-content-center">
     <div *ngFor="let item of items">
-      <div class="card">
-        <div class="card-body">
-          <img src="{{ item.profileImage }}" alt="" height="150" width="150" />
-          <p class="card-text">
-            <small class="text-muted">{{ item.about }}</small>
+      <div class="card ">
+        <div class="card-body center">
+          <img src="{{ item.profileImage }}" alt="" height="300" width="300"  />
+          <p  class="card-text ">
+            <small  style="width: auto; height: auto;" >{{ item.about }}</small>
           </p>
         </div>
       </div>

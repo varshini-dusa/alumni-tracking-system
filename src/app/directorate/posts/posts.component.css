@@ -1,14 +1,30 @@
 .card {
   width: 30%;
-  margin: 1rem;
+  /* margin: 1rem; */
   background-color: #4d80e4;
   color: #4d80e4;
+  border: none;
+  
 }
 #content {
-  text-align: center;
+  text-align: ceter;
   /* border: 1px solid green; */
   /* padding-left: ; */
+  margin-left: auto;
+  margin-right: auto;
 }
 .modal {
   color: #4d80e4;
+}
+
+.p {
+  font-size: 30px;
+  color: aliceblue;
+}
+.container{
+  padding-left: 30%;
+}
+#post-btn {
+  float: right;
+  margin: 0px 32px;
 }

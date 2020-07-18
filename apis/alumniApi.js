@@ -55,11 +55,53 @@ alumniApp.post("/upload", upload.single("photo"), (req, res) => {
   // let userCollectionObj = req.app.locals.userCollectionObj;
 
   var userCollectionObj = dbo.getDb().uploadobj;
-
+  var alumnicollectionobj = dbo.getDb().alumniobj;
   userCollectionObj.insertOne(req.body, (err, success) => {
     if (err) console.log("error", err);
     else {
-      res.send({ message: "successfully created" });
+      // console.log(result);
+      let ts = Date.now();
+      let date_ob = new Date(ts);
+      let date = date_ob.getDate();
+      let month = date_ob.getMonth() + 1;
+      let year = date_ob.getFullYear();
+      let hours = date_ob.getHours();
+      let minutes = date_ob.getMinutes();
+      let seconds = date_ob.getSeconds();
+      let obj = {};
+      obj["sentBy"] = req.body.sentBy;
+      obj["receivedBy"] = req.body.username;
+      obj["message"] = req.body.message;
+      obj["sentTime"] = hours + ":" + minutes + ":" + seconds;
+      obj["sentDate"] = year + "-" + month + "-" + date;
+      alumnicollectionobj.updateOne(
+        { username: "admin" },
+        {
+          $inc: { notification: 1 },
+          $push: {
+            notifyQueue:
+              "New post made by " +
+              req.body.username +
+              " at " +
+              hours +
+              ":" +
+              minutes +
+              ":" +
+              seconds +
+              " " +
+              year +
+              "-" +
+              month +
+              "-" +
+              date,
+          },
+        },
+        (err, notifyobj) => {
+          if (err) console.log(err);
+          else
+            res.send({ message: "post successfully created", items: success });
+        }
+      );
     }
   });
 });

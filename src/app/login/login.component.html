@@ -12,10 +12,11 @@
               id="adm"
               class="form-check-input"
               value="admin"
+              #r="ngModel"
               ngModel
               required
             />
-            <label for="adm" class="form-check-label">Admin</label>
+            <label for="adm" class="form-check-label">Directorate</label>
           </div>
           <div class="form-check">
             <input
@@ -25,13 +26,18 @@
               class="form-check-input"
               value="user"
               ngModel
+              required
             />
             <label for="usr" class="form-check-label">User</label>
+          </div>
+          <div *ngIf="r.invalid && ref.submitted" class="alert alert-danger">
+            *Role selection is required
           </div>
         </div>
         <div class="card-text">
           <!-- username -->
           <div class="form-group" ng-class="{ 'not-empty': username.length }">
+            <label for="un" class="animated-label">Username</label>
             <input
               type="text"
               name="username"
@@ -41,11 +47,11 @@
               class="form-control"
               required
             />
-            <label for="un" class="animated-label">Username</label>
           </div>
 
           <!-- password -->
           <div class="form-group" ng-class="{ 'not-empty': password.length }">
+            <label for="pw" class="animated-label">Password</label>
             <input
               type="password"
               name="password"
@@ -54,7 +60,7 @@
               ngModel
               class="form-control"
               required
-            /><label for="pw" class="animated-label">Password</label>
+            />
           </div>
         </div>
         <div class="card-text">
@@ -64,6 +70,7 @@
               value="Login"
               id="login-btn"
               class="btn btn-success"
+              [disabled]="ref.invalid"
             />
           </div>
           <div id="signup">

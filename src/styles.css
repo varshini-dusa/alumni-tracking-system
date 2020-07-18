@@ -4,15 +4,15 @@ html {
   font-family: "Montserrat";
   margin: 0rem;
   padding: 0rem;
-  color: #dff6f0;
-  background-color: #4d80e4;
+  color: #4d80e4;
+  background-color: #dff6f0;
   /* background-color: black; */
 }
 
 p,
 a:link,
 a:visited {
-  color: #dff6f0;
+  color: #4d80e4;
 }
 
 h1,

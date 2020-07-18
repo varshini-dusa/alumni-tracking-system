@@ -83,7 +83,7 @@ postApp.post("/upload", upload.single("photo"), (req, res) => {
           $inc: { notification: 1 },
           $push: {
             notifyQueue:
-              "Post by " +
+              "New post made by " +
               req.body.username +
               " at " +
               hours +

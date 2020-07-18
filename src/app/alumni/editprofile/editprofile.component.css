@@ -1,0 +1,14 @@
+.row {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 3rem;
+  text-align: center;
+}
+.navclass {
+  padding-left: 5rem;
+  /* border: black 1px solid; */
+}
+.list-group-item {
+  background-color: #dff6f0;
+  border: none;
+}

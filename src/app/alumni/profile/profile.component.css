@@ -1,0 +1,20 @@
+p {
+  text-align: left;
+}
+img {
+  padding-inline: auto;
+}
+.container {
+  margin-left: 8rem;
+  margin-right: 3rem;
+}
+.edudet {
+  margin-left: 2rem;
+  padding: 2rem;
+}
+form {
+  padding: 2rem;
+}
+.form1 {
+  padding-left: 15%;
+}

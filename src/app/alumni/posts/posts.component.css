@@ -1,11 +1,13 @@
 #post-btn {
   float: right;
+  margin: 15px 32px;
 }
 .card {
   width: 30%;
   margin: 1rem;
-  background-color: #4d80e4;
+  background-color: #dff6f0;
   color: #4d80e4;
+  border: none;
 }
 #content {
   text-align: center;
@@ -14,4 +16,11 @@
 }
 .modal {
   color: #4d80e4;
+}
+.container {
+  padding-left: 30%;
+}
+.p {
+  font-size: 30px;
+  color: aliceblue;
 }

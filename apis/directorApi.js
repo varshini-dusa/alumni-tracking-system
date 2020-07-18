@@ -47,6 +47,11 @@ directorApp.post("/search", (req, res) => {
     obj["batch.passing"] = obj.year;
     delete obj["year"];
   }
+  if (obj.cmpy != undefined) {
+    obj["work.0.company"] = obj.cmpy;
+    delete obj["cmpy"];
+  }
+  if (obj.size == 0) obj = {};
   alumniCollectionObj.find(obj).toArray(function (err, result) {
     if (err) {
       console.log(err);

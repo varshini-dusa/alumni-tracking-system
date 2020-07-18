@@ -5,6 +5,7 @@
 
 .card-title {
   margin-bottom: 1rem;
+  color: #424874;
 }
 
 #content {
@@ -18,6 +19,9 @@
 #pw {
   width: 90%;
 }
+.animated-label {
+  color: #424874;
+}
 
 #login-btn {
   margin-top: 1rem;
@@ -29,7 +33,7 @@
   padding-top: 16px;
   margin-bottom: 16px;
 }
-.form-group .animated-label {
+/* .form-group .animated-label {
   position: absolute;
   top: 20px;
   left: 0;
@@ -44,8 +48,8 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-}
-.form-group .animated-label:after {
+} */
+/* .form-group .animated-label:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -53,14 +57,14 @@
   height: 2px;
   width: 10px;
   visibility: hidden;
-  /* display: none; */
+   display: none; 
   background-color: #8e44ad;
   transition: 0.2s ease all;
-}
-.form-group.not-empty .animated-label {
+} */
+/* .form-group.not-empty .animated-label {
   top: 0;
   font-size: 12px;
-  /* background-color: aqua; */
+  background-color: aqua; 
 }
 .form-group .form-control {
   position: relative;
@@ -85,10 +89,14 @@
   visibility: visible;
   width: 100%;
   left: 0;
-}
+} */
 
 #signup,
 a {
   color: #4d80e4;
   text-align: center;
+}
+
+h5 {
+  color: #424874;
 }

@@ -1,9 +1,9 @@
 <div class="container">
   <ul class="list-group" *ngFor="let m of mess">
     <li class="list-group-item">
-      {{ m.message }}
-      {{ m.receivedBy }}
-      {{ m.sentTime }}
+      Message: {{ m.message }} <br />
+      Sent to: {{ m.receivedBy }} <br />
+      Sent at: {{ m.sentTime }}
       {{ m.sentDate }}
     </li>
   </ul>

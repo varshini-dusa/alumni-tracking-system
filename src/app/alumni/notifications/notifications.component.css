@@ -1,3 +1,6 @@
 .container {
   color: #4d80e4;
 }
+.list-group-item {
+  margin: 1rem;
+}

@@ -9,8 +9,8 @@
 }
 /* title section */
 #title {
-  background-color: #4d80e4;
-  color: #dff6f0;
+  background-color: #dff6f0;
+  color: #4d80e4;
   text-align: left;
 }
 .container-fluid {
@@ -27,12 +27,12 @@
 
 /* footer section */
 #footer {
-  background-color: #4d80e4;
+  background-color: #dff6f0;
   padding-top: 7% 15%;
 }
 .copy {
   margin: 1%;
-  color: #dff6f0;
+  color: #4d80e4;
 }
 .ic {
   margin: 1%;

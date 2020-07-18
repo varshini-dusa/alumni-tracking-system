@@ -2,7 +2,7 @@
   color: #4d80e4;
 }
 label {
-  color: #dff6f0;
+  color: #4d80e4;
 }
 .bttn {
   margin-top: 1rem;
@@ -10,4 +10,7 @@ label {
 .row1 label,
 .card-text {
   color: #4d80e4;
+}
+.card-title {
+  color: #424874;
 }

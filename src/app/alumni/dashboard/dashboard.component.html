@@ -1,6 +1,6 @@
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
-    <a class="nav-link" routerLink="posts">Dashboard</a>
+    <a class="nav-link" routerLink="posts">{{ username }}'s Dashboard</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" routerLink="messages">Messages</a>
@@ -20,7 +20,6 @@
     <a class="nav-link" routerLink="editprofile">Edit Profile</a>
   </li>
 </ul>
-<p>HELLO,{{ username }}</p>
-<div>
+<div class="content">
   <router-outlet></router-outlet>
 </div>

@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
     this.hc.post('/director/search', searchObj).subscribe((res) => {
       if (res['message'] == 'found') {
         this.resObj = res['result'];
+        // this.resObj = this.resObj.filter((item) => item.username != 'admin');
         // console.log(this.resObj.count());
       }
     });

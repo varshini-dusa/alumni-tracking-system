@@ -1,21 +1,6 @@
 <h2>Education</h2>
 <hr />
 <form #ref="ngForm" (ngSubmit)="editProfile(ref)">
-  <div class="container">
-    <div *ngFor="let user of edu">
-      <div class="form-group row">
-        <h5>{{ user.degree }}</h5>
-      </div>
-      <div class="form-group row">
-        <p>{{ user.year.from }} - {{ user.year.to }}</p>
-      </div>
-      <div class="form-group row">
-        <p>
-          {{ user.place }}
-        </p>
-      </div>
-    </div>
-  </div>
   <div class="form-group row">
     <label for="degree" class="col col-sm-2 col-form-label"
       >Education course</label
@@ -43,6 +28,8 @@
         ngModel
       />
     </div>
+  </div>
+  <div class="form-group row">
     <label for="passing" class="col col-sm-2 col-form-label"
       >Passing Year:</label
     >

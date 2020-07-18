@@ -23,11 +23,13 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
   resObj: any;
   userObj: any = null;
+  nres: any = -1;
   doSearch(ngFormObj: NgForm) {
     let searchObj = ngFormObj.value;
     this.hc.post('/director/search', searchObj).subscribe((res) => {
       if (res['message'] == 'found') {
         this.resObj = res['result'];
+        this.nres = this.resObj.size;
         // this.resObj = this.resObj.filter((item) => item.username != 'admin');
         // console.log(this.resObj.count());
       }

@@ -23,6 +23,6 @@ export class MessagesComponent implements OnInit {
       }
     });
     this.userObj = this.ps.userObj;
-    this.mess = this.userObj.messages;
+    this.mess = this.userObj.messages.reverse();
   }
 }

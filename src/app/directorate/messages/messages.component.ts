@@ -10,6 +10,6 @@ export class MessagesComponent implements OnInit {
   constructor(private ps: ProfileService) {}
   mess: any = null;
   ngOnInit(): void {
-    this.mess = this.ps.userObj.messages;
+    this.mess = this.ps.userObj.messages.reverse();
   }
 }

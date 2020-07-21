@@ -10,6 +10,8 @@
         id="position"
         class="form-control col"
         ngModel
+        #position="ngModel"
+        required
       />
     </div>
   </div>
@@ -22,6 +24,8 @@
         id="company"
         class="form-control col"
         ngModel
+        #company="ngModel"
+        required
       />
     </div>
   </div>
@@ -34,6 +38,8 @@
         id="branch"
         class="form-control col"
         ngModel
+        #branch="ngModel"
+        required
       />
     </div>
   </div>
@@ -46,8 +52,38 @@
         id="join"
         class="form-control col"
         ngModel
+        #join="ngModel"
+        required
       />
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Add new work details</button>
+  <div class="form-group row">
+    <label for="left" class="col col-form-label">Left year</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name="left"
+        id="left"
+        class="form-control col"
+        ngModel
+        #left="ngModel"
+        required
+        value="Present"
+        placeholder="Present"
+      />
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="
+      position.errors?.required ||
+      company.errors?.required ||
+      branch.errors?.required ||
+      join.errors?.required ||
+      left.errors?.required
+    "
+  >
+    Add new work details
+  </button>
 </form>

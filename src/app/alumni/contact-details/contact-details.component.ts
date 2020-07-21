@@ -31,6 +31,7 @@ export class ContactDetailsComponent implements OnInit {
     this.hc.post('/alumni/editprofile', userObj).subscribe((res: object) => {
       if (res['message'] == 'edit profile works') {
         console.log('edit profile works');
+        alert('updated contact details');
       } else {
         console.log('User not existed');
       }

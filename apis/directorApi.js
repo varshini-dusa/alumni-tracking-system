@@ -44,7 +44,7 @@ directorApp.post("/search", (req, res) => {
     delete obj["name"];
   }
   if (obj.college != undefined) {
-    obj["education.0.place"] = obj.college;
+    obj["education"] = { $elemMatch: { place: obj.college } };
     delete obj["college"];
   }
   if (obj.year != undefined) {
@@ -52,9 +52,10 @@ directorApp.post("/search", (req, res) => {
     delete obj["year"];
   }
   if (obj.cmpy != undefined) {
-    obj["work.0.company"] = obj.cmpy;
+    obj["work"] = { $elemMatch: { company: obj.cmpy } };
     delete obj["cmpy"];
   }
+  console.log(obj);
   if (obj.size == 0) obj = {};
   alumniCollectionObj.find(obj).toArray(function (err, result) {
     if (err) {
@@ -77,58 +78,151 @@ directorApp.post("/sendMessage", (req, res) => {
   let minutes = date_ob.getMinutes();
   let seconds = date_ob.getSeconds();
   let obj = {};
-  obj["sentBy"] = req.body.sentBy;
-  obj["receivedBy"] = req.body.username;
-  obj["message"] = req.body.message;
+
   obj["sentTime"] = hours + ":" + minutes + ":" + seconds;
   obj["sentDate"] = year + "-" + month + "-" + date;
-
+  obj["sentBy"] = req.body.sentBy;
+  obj["message"] = req.body.message;
   var alumniCollectionObj = dbo.getDb().alumniobj;
-  alumniCollectionObj.updateMany(
-    { $or: [{ username: req.body.username }, { username: "admin" }] },
-    { $push: { messages: obj } },
-    (err, userObj) => {
-      if (err) console.log(err);
-      else if (userObj == null) {
-        console.log("No document found");
-      } else {
-        alumniCollectionObj.findOne({ username: "admin" }, (err, userObj) => {
-          if (err) {
-            console.log(err);
-          } else {
-            alumniCollectionObj.updateOne(
-              { username: req.body.username },
-              {
-                $inc: { notification: 1 },
-                $push: {
-                  notifyQueue:
-                    "Message from admin at " +
-                    hours +
-                    ":" +
-                    minutes +
-                    ":" +
-                    seconds +
-                    " " +
-                    year +
-                    "-" +
-                    month +
-                    "-" +
-                    date,
+  //send message to single person
+  if (req.body.username != undefined) {
+    obj["receivedBy"] = req.body.username;
+    alumniCollectionObj.updateMany(
+      { $or: [{ username: req.body.username }, { username: "admin" }] },
+      { $push: { messages: obj } },
+      (err, userObj) => {
+        if (err) console.log(err);
+        else if (userObj == null) {
+          console.log("No document found");
+        } else {
+          alumniCollectionObj.findOne({ username: "admin" }, (err, userObj) => {
+            if (err) {
+              console.log(err);
+            } else {
+              alumniCollectionObj.updateOne(
+                { username: req.body.username },
+                {
+                  $inc: { notification: 1 },
+                  $push: {
+                    notifyQueue:
+                      "Message from admin at " +
+                      hours +
+                      ":" +
+                      minutes +
+                      ":" +
+                      seconds +
+                      " " +
+                      year +
+                      "-" +
+                      month +
+                      "-" +
+                      date,
+                  },
                 },
-              },
-              (err, notiObj) => {
-                if (err) {
-                  console.log(err);
-                } else {
-                  res.send({ message: "Message sent", userObj: userObj });
+                (err, notiObj) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    res.send({ message: "Message sent", userObj: userObj });
+                  }
                 }
-              }
-            );
-          }
-        });
+              );
+            }
+          });
+        }
       }
+    );
+  } //send message to selected group
+  else if (req.body.resArray != undefined) {
+    var usernames = ["admin"];
+    for (x in req.body.resArray) {
+      if (req.body.resArray[x].username != undefined)
+        usernames.push(req.body.resArray[x].username);
     }
-  );
+    alumniCollectionObj.updateMany(
+      { username: { $in: usernames } },
+      { $push: { messages: obj } },
+      (err, userObj) => {
+        if (err) console.log(err);
+        else if (userObj == null) {
+          console.log("No document found");
+        } else {
+          usernames.shift();
+          alumniCollectionObj.updateMany(
+            { username: { $in: usernames } },
+            {
+              $inc: { notification: 1 },
+              $push: {
+                notifyQueue:
+                  "Message from admin at " +
+                  hours +
+                  ":" +
+                  minutes +
+                  ":" +
+                  seconds +
+                  " " +
+                  year +
+                  "-" +
+                  month +
+                  "-" +
+                  date,
+              },
+            },
+            (err, notiObj) => {
+              if (err) {
+                console.log(err);
+              } else {
+                res.send({ message: "Message sent", userObj: userObj });
+              }
+            }
+          );
+        }
+      }
+    );
+  } //send message people
+  else {
+    //send message to all people
+    obj["receivedBy"] = "All";
+    alumniCollectionObj.updateMany(
+      { username: { $exists: true } },
+      { $push: { messages: obj } },
+      (err, userObj) => {
+        if (err) console.log(err);
+        else if (userObj == null) {
+          console.log("No document found");
+        } else {
+          alumniCollectionObj.updateMany(
+            {},
+            {
+              $inc: { notification: 1 },
+              $push: {
+                notifyQueue:
+                  "Message from admin at " +
+                  hours +
+                  ":" +
+                  minutes +
+                  ":" +
+                  seconds +
+                  " " +
+                  year +
+                  "-" +
+                  month +
+                  "-" +
+                  date,
+              },
+            },
+            (err, notiObj) => {
+              if (err) {
+                console.log(err);
+              } else {
+                res.send({ message: "Message sent", userObj: userObj });
+              }
+            }
+          );
+        }
+      }
+    );
+  }
 });
 
 //export  adminApp

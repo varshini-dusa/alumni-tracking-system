@@ -2,7 +2,7 @@
   <div class="col-sm-3"></div>
   <div class="col-sm-6 content">
     <h4>SEARCH</h4>
-    <form #ref="ngForm" (ngSubmit)="doSearch(ref)">
+    <form #ref2="ngForm" (ngSubmit)="doSearch(ref2)">
       <div class="form-group row">
         <label for="roll" class="col-sm-2 col-form-label">ROLL NUMBER</label>
         <div class="col-sm-10">
@@ -11,28 +11,15 @@
             name="roll"
             id="roll"
             class="form-control"
-            #ref="ngModel"
             ngModel
           />
         </div>
       </div>
-      <!-- <div class="form-group row">
-        <label for="name" class="col-sm-2 col-form-label">NAME</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            class="form-control"
-            ngModel
-            [disabled]="ref.submitted"
-          />
-        </div>
-      </div> -->
-      <div class="form-group row">
+      <div class="form-group row" id="clgdiv">
         <label for="college" class="col-sm-2 col-form-label">COLLEGE</label>
         <div class="col-sm-10">
           <select name="college" id="college" class="form-control" ngModel>
+            <option value="empty" selected>Select a college</option>
             <option
               value="VNR Vignana Jyothi Institute of Engineering and Technology"
               name="vnr"
@@ -51,27 +38,29 @@
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" id="passdiv">
         <label for="year" class="col-sm-2 col-form-label">PASSING YEAR</label>
         <div class="col-sm-10">
           <select name="year" id="year" class="form-control" ngModel>
+            <option value="empty" selected>Select passing year</option>
             <option value="2019" name="2019">2019</option>
             <option value="2020" name="2020">2020</option>
             <option value="2021" name="2021">2021</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" id="citydiv">
         <label for="city" class="col-sm-2 col-form-label">CITY</label>
         <div class="col-sm-10">
           <select name="city" id="city" class="form-control" ngModel>
+            <option value="empty" selected>Select a city</option>
             <option value="Hyderabad" name="Hyderabad">Hyderabad</option>
             <option value="Mumbai" name="Mumbai">Mumbai</option>
             <option value="Bengaluru" name="Bengaluru">Bengaluru</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" id="comdiv">
         <label for="cmpy" class="col-sm-2 col-form-label">COMPANY</label>
         <div class="col-sm-10">
           <input
@@ -84,27 +73,101 @@
         </div>
       </div>
       <button type="submit" class="btn btn-success">Submit</button>
+      <button type="reset" class="btn btn-success rs" (click)="resetbtn()">
+        Reset
+      </button>
     </form>
   </div>
   <div class="col-sm-3"></div>
 </div>
 
 <div class="container">
+  <!-- Button trigger modal -->
+  <button
+    class="btn btn-primary srs"
+    data-toggle="modal"
+    data-target="#exampleModal"
+  >
+    Send message to all
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form #ref1="ngForm" (ngSubmit)="sendToAll(ref1)">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Enter message to send
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="about">Message</label>
+              <input
+                type="text"
+                name="message"
+                id="message"
+                class="form-control"
+                ngModel
+                #about="ngModel"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="about.errors?.required"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div class="row row1">
     <div class="col-sm-4" *ngFor="let res of resObj">
       <div class="card" style="margin: 2rem;" *ngIf="res.username != 'admin'">
         <div class="card-body">
           <h5 class="card-title">{{ res.name.first }} {{ res.name.last }}</h5>
           <p class="card-text">
-            {{ res.education[0].degree }} <br />
-            {{ res.education[0].year.to }} <br />
+            {{ res.education[1].degree }} <br />
+            {{ res.education[1].year.to }} <br />
             {{ res.branch }}
           </p>
           <p class="card-text">
-            <small style="color: #4d80e4;">{{ res.education[0].place }}</small>
+            <small style="color: #4d80e4;">{{ res.education[1].place }}</small>
           </p>
           <p class="card-text" *ngIf="res.work != undefined">
-            <small style="color: #4d80e4;">{{ res.work[0].company }}</small>
+            <small style="color: #4d80e4;">{{
+              res.work[res.work.length - 1].company
+            }}</small>
           </p>
           <form #ref="ngForm" (ngSubmit)="sendMessage(ref, res)">
             <label for="message">Message</label>

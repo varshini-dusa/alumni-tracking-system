@@ -15,7 +15,7 @@ export class AppComponent {
     if (this.ls.isAdmin) {
       this.link = 'directorate/adminpage';
     } else {
-      console.log(this.ls.LoggedInUsername);
+      // console.log(this.ls.LoggedInUsername);
 
       this.link = 'alumni/dashboard/' + this.ls.LoggedInUsername;
     }

@@ -14,3 +14,10 @@ label {
 .card-title {
   color: #424874;
 }
+.rs {
+  margin-left: 2rem;
+}
+.srs {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

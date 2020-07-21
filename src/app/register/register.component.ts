@@ -15,33 +15,32 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   submitForm(userObj: NgForm) {
-    userObj=userObj.value;
-      Object.keys(userObj).forEach(
-        (k) => !userObj[k] && userObj[k] !== undefined && delete userObj[k]
-      );
-      
-      let l=Object.keys(userObj).length;
-      if(l!=10)
-      {
-        alert("All fileds are mandatory")
-      }
-      else{
-        this.rs.doRegister(userObj.value).subscribe((res) => {
-          if (res['message'] == 'Does not exist') {
-            alert('Entry does not exist');
-            // userObj.reset();
-          }
-          if (res['message'] == 'Account already exists') {
-            alert('Account already exists');
-          }
-          if (res['message'] == 'successfully created') {
-            alert('registered successfully');
-            this.router.navigate(['./login']);
-          }
-        });
-      }
-      
+    userObj = userObj.value;
+    // console.log(userObj);
+
+    Object.keys(userObj).forEach(
+      (k) => !userObj[k] && userObj[k] !== undefined && delete userObj[k]
+    );
+
+    let l = Object.keys(userObj).length;
+    if (l != 10) {
+      alert('All fields are mandatory');
+    } else {
+      this.rs.doRegister(userObj).subscribe((res) => {
+        if (res['message'] == 'Does not exist') {
+          alert('Entry does not exist');
+          // userObj.reset();
+        }
+        if (res['message'] == 'Account already exists') {
+          alert('Account already exists');
+        }
+        if (res['message'] == 'successfully created') {
+          alert('registered successfully');
+          this.router.navigate(['./login']);
+        }
+      });
+    }
+
     // let userOb = JSON.stringify(userObj.value);
- 
   }
 }

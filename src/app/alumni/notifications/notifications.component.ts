@@ -25,7 +25,7 @@ export class NotificationsComponent implements OnInit {
     }
     if (this.ps.isNotificationOn) {
       this.pps.emptyNotifications(this.ps.userObj).subscribe((res) => {
-        console.log(res);
+        // console.log(res);
         this.ps.isNotificationOn = false;
       });
     }

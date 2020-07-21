@@ -17,7 +17,7 @@ export class PostService {
     return this.hc.get('/posts/getPosts');
   }
   emptyNotifications(fd) {
-    console.log(fd);
+    // console.log(fd);
 
     return this.hc.post('/posts/emptyNot', fd);
   }

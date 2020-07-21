@@ -119,7 +119,7 @@ alumniApp.post("/register", (req, res) => {
       $and: [
         { email: req.body.Email },
         { "name.first": req.body.first },
-        { "name.last": req.body.last },
+        // { "name.last": req.body.last },
         { rollnum: req.body.roll },
         { "batch.joining": req.body.joining },
         { "batch.passing": req.body.passing },
@@ -256,6 +256,7 @@ alumniApp.post("/editprofile", (req, res) => {
     filter["company"] = obj.company;
     filter["branch"] = obj.branch;
     filter["join"] = obj.join;
+    filter["left"] = obj.left;
   }
   var userCollectionObj = dbo.getDb().alumniobj;
   if (Object.keys(filter).length != 0) {

@@ -14,6 +14,8 @@ export class LoginService {
 
   //to user login
   login(userObj): Observable<any> {
+    // console.log(userObj);
+
     return this.hc.post('/alumni/login', userObj);
   }
   //to user logout

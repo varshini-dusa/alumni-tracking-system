@@ -32,6 +32,7 @@ export class EduDetailsComponent implements OnInit {
     this.hc.post('/alumni/editprofile', userObj).subscribe((res: object) => {
       if (res['message'] == 'edit profile works') {
         console.log('edit profile works');
+        alert('updated education details');
       } else {
         console.log('User not existed');
       }

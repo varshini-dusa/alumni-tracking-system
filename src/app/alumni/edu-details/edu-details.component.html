@@ -12,6 +12,8 @@
         id="degree"
         class="form-control col"
         ngModel
+        #degree="ngModel"
+        required
       />
     </div>
   </div>
@@ -26,6 +28,8 @@
         id="joining"
         class="form-control col"
         ngModel
+        #joining="ngModel"
+        required
       />
     </div>
   </div>
@@ -40,6 +44,8 @@
         id="passing"
         class="form-control col"
         ngModel
+        #passing="ngModel"
+        required
       />
     </div>
   </div>
@@ -52,10 +58,21 @@
         id="place"
         class="form-control col"
         ngModel
+        #place="ngModel"
+        required
       />
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="
+      place.errors?.required ||
+      passing.errors?.required ||
+      joining.errors?.required ||
+      degree.errors?.required
+    "
+  >
     Add new education details
   </button>
 </form>

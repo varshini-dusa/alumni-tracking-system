@@ -180,4 +180,29 @@
       </div>
     </div>
   </div>
+  <div class="workdet">
+    <h3>Work Details</h3>
+    <hr />
+    <div class="container">
+      <div *ngFor="let user of work">
+        <div class="form-group row">
+          <h5>{{ user.position }}</h5>
+        </div>
+        <div class="form-group row">
+          <p>{{ user.company }}</p>
+        </div>
+        <div class="form-group row">
+          <p>
+            {{ user.branch }}
+          </p>
+        </div>
+        <div class="form-group row" *ngIf="user.close != undefined">
+          <p>{{ user.join }} - {{ user.close }}</p>
+        </div>
+        <div class="form-group row" *ngIf="user.close == undefined">
+          <p>{{ user.join }} - Present</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

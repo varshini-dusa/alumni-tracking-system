@@ -23,6 +23,7 @@ const routes: Routes = [
         path: 'editprofile',
         component: EditprofileComponent,
         children: [
+          { path: '', component: BasicDetailsComponent },
           { path: 'basic-details', component: BasicDetailsComponent },
           { path: 'contact-details', component: ContactDetailsComponent },
           { path: 'edu-details', component: EduDetailsComponent },

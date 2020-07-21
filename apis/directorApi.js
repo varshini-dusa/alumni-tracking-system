@@ -35,6 +35,10 @@ directorApp.post("/search", (req, res) => {
   Object.keys(obj).forEach(
     (k) => !obj[k] && obj[k] !== undefined && delete obj[k]
   );
+  if (obj.roll != undefined) {
+    obj["rollnum"] = obj.roll;
+    delete obj["roll"];
+  }
   if (obj.name != undefined) {
     obj["name.first"] = obj.name;
     delete obj["name"];

@@ -57,6 +57,7 @@ directorApp.post("/search", (req, res) => {
   }
   console.log(obj);
   if (obj.size == 0) obj = {};
+  obj.username = { $exists: true };
   alumniCollectionObj.find(obj).toArray(function (err, result) {
     if (err) {
       console.log(err);

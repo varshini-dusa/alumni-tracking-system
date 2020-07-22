@@ -196,11 +196,9 @@
             {{ user.branch }}
           </p>
         </div>
-        <div class="form-group row" *ngIf="user.close != undefined">
-          <p>{{ user.join }} - {{ user.close }}</p>
-        </div>
-        <div class="form-group row" *ngIf="user.close == undefined">
-          <p>{{ user.join }} - Present</p>
+
+        <div class="form-group row">
+          <p>{{ user.join }}</p>
         </div>
       </div>
     </div>

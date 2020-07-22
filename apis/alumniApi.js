@@ -256,7 +256,6 @@ alumniApp.post("/editprofile", (req, res) => {
     filter["company"] = obj.company;
     filter["branch"] = obj.branch;
     filter["join"] = obj.join;
-    filter["left"] = obj.left;
   }
   var userCollectionObj = dbo.getDb().alumniobj;
   if (Object.keys(filter).length != 0) {

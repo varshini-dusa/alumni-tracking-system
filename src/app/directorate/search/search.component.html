@@ -165,9 +165,9 @@
             <small style="color: #4d80e4;">{{ res.education[1].place }}</small>
           </p>
           <p class="card-text" *ngIf="res.work != undefined">
-            <small style="color: #4d80e4;">{{
-              res.work[res.work.length - 1].company
-            }}</small>
+            <small style="color: #4d80e4;" *ngFor="let r of res.work"
+              >{{ r.company }}&nbsp;</small
+            >
           </p>
           <form #ref="ngForm" (ngSubmit)="sendMessage(ref, res)">
             <label for="message">Message</label>
